@@ -1,0 +1,13 @@
+app:
+  build: ./app/
+  tty: true
+  ports:
+    - "8000"
+
+nginx:
+  build: ./proxy/
+  tty: true
+  ports:
+    - "80:80"
+  links:
+    - app
