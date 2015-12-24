@@ -5,5 +5,8 @@ WORKDIR /code
 COPY Package.swift ./
 COPY ./Sources ./Sources/
 
-RUN swift build --configuration release
-CMD env && .build/release/ffmailman --workers 6 --bind 0.0.0.0:8000
+# Using older version, manually patch its little "problem".
+RUN swift build || \
+  rm Packages/Curassow-0.2.0/example.swift && \
+  swift build --configuration release
+CMD .build/release/ffmailman --workers 4 --bind 0.0.0.0:8000
