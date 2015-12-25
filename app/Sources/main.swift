@@ -8,17 +8,14 @@ final class FuckFuckingMailman: 🇺🇸 {
     super.init()
     get("/") { _ in
       print("got request")
-      let query = "joe fucking groff eh"
-      let comps = NSURLComponents(string: "https://encrypted.google.com/search")!
-      let reply = NSURLQueryItem(name: "q", value: query)
-      let asSiteSearch = NSURLQueryItem(name: "as_sitesearch", value: "lists.swift.org")
-      comps.queryItems = [reply, asSiteSearch]
-      print(comps)
-      let redirectURL = comps.string!
-      print(redirectURL)
-      let r = Response(.Found, headers: [("Location", redirectURL)])
-      print(r)
-      return r
+      let query = NSString(string: "joe fucking groff eh")
+      let url = NSString(string: "https://encrypted.google.com/search?as_sitesearch=lists.swift.org&q=")
+      let escapedQuery = query
+        .stringByAddingPercentEncodingWithAllowedCharacters(
+          NSCharacterSet.URLQueryAllowedCharacterSet()
+        )!
+      let redirectURL = url.stringByAppendingString(escapedQuery)
+      return Response(.Found, headers: [("Location", redirectURL)])
     }
   }
 }
