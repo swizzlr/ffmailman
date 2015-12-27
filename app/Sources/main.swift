@@ -6,9 +6,8 @@ import Foundation
 final class FuckFuckingMailman: 🇺🇸 {
   override init() {
     super.init()
-    get("/") { _ in
-      print("got request")
-      let query = NSString(string: "joe fucking groff eh")
+    get("/:query") { params in
+      let query = NSString(string: params["query"]!)
       let url = NSString(string: "https://encrypted.google.com/search?as_sitesearch=lists.swift.org&q=")
       let escapedQuery = query
         .stringByAddingPercentEncodingWithAllowedCharacters(
