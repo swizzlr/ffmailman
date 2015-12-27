@@ -10,5 +10,10 @@ nginx:
   ports:
     - "80:80"
     - "443:443"
+  volumes_from:
+    - web
   links:
     - app
+
+web:
+  build: ./web/
