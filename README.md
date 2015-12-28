@@ -8,8 +8,6 @@ Try it out:
 fuckfuckingmailman.com/query+goes+here
 ```
 
-Web UI coming!
-
 # How it works
 
 Fucking Fuck Mailman (or Fuck Fucking Mailman) is built on the excellent [Curassow web server](https://github.com/kylef/Curassow) and my very own [Underwood](https://github.com/swizzlr/Underwood), a Sinatra-like DSL for Swift web applications that conforms to the [Nest](https://github.com/nestproject/Nest) web server interface.
